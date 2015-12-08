@@ -1,0 +1,48 @@
+HTTP GET /api/items
+RESPONSE 200 OK 
+[
+  {
+    "id": "1",
+    "description": "PS4",
+    "qty": "1",
+	"price": "399.99"
+  },
+  {
+    "id": "2",
+    "description": "Street Fighter V",
+    "qty": "2",
+	"price": "59.99"
+  }
+]
+
+
+
+HTTP POST /api/items
+REQUEST Body 
+{
+	"description": "Mortal Kombat X",
+    "qty": "1",
+	"price": "59.99"
+}
+
+RESPONSE 200 OK 
+{
+	"description": "Mortal Kombat X",
+    "qty": "1",
+	"price": "59.99",
+	"id": "3"
+}
+
+
+
+HTTP DELETE /api/items/:id
+RESPONSE 200 OK 
+{
+	"message": "Item deleted"
+}
+
+HTTP DELETE /api/items/x9
+RESPONSE 404 NOT FOUND 
+{
+	"message": "Item with x9 does not exit"
+}
