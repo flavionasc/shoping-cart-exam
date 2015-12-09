@@ -3,36 +3,36 @@ class CartService {
     
     public static function listCarts() {
         $db = ConnectionFactory::getDB();
-        $carts = array();
+        $items = array();
         
-        foreach($db->carts() as $cart) {
-           $carts[] = array (
-               'id' => $cart['id'],
-               'description' => $cart['description'],
-               'qty' => $cart['qty'],
-               'price' => $cart['price']
+        foreach($db->items() as $item) {
+           $items[] = array (
+               'id' => $item['id'],
+               'description' => $item['description'],
+               'qty' => $item['qty'],
+               'price' => $item['price']
            ); 
         }
-        return $carts;
+        return $items;
     }
     
     public static function getById($id) {
         $db = ConnectionFactory::getDB();
-        return $db->carts[$id];
+        return $db->items[$id];
     }
     
-    public static function add($newCart) {
+    public static function add($newItem) {
         $db = ConnectionFactory::getDB();
-        $cart = $db->carts->insert($newCart);
-        return $cart;
+        $item = $db->items->insert($newItem);
+        return $item;
     }
   
     
     public static function delete($id) {
         $db = ConnectionFactory::getDB();
-        $cart = $db->carts[$id];
-        if($cart) {
-            $cart->delete();
+        $item = $db->items[$id];
+        if($item) {
+            $item->delete();
             return true;
         }
         return false;
